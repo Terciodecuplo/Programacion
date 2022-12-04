@@ -6,17 +6,11 @@ import java.util.Scanner;
 public class Ejercicio5U3Lists {
     public static void main(String[] args) {
         Ejercicio5U3Lists ejercicio5U3List = new Ejercicio5U3Lists();
-        ejercicio5U3List.executeProgram();
+        ejercicio5U3List.executeProgram(); // Llamo a la función donde corren el resto de funciones (para no usar static)
     }
-
+    // Función principal del programa.
     private void executeProgram() {
-        // Order a list of numbers introduced by the user from 0 to n. The user has to insert numbers until a 0 is detected.
-        // Show instructions msg *
-        // Receive input from user *
-        // Detect if the user insert a 0 *
-        // Save the inputs in a list *
-        // Sort the list from lower to higher *
-        // Show ordered list
+
         showInstructions();
         List<Integer> listOfNumbers = getUserInput();
         List<Integer> sortedList = sortList(listOfNumbers);
@@ -27,27 +21,27 @@ public class Ejercicio5U3Lists {
         System.out.println("A continuación se le van a solicitar la entrada de varios números. Si desea finalizar la entrada" +
                 " de números pulse 0 y se procederá a ordenar los números introducidos.");
     }
-
+    // Creo la lista con los números que el usuario va introduciendo hasta que pulsa 0.
     private List<Integer> getUserInput() {
         Scanner scanner = new Scanner(System.in);
-        List<Integer> userInputList = new LinkedList<>();
+        List<Integer> userInputList = new LinkedList<>(); // La utilización de LinkedList es porque importa el orden de introducción de los datos
         do {
             System.out.print("Introduzca un número (0 para salir): ");
             userInputList.add(scanner.nextInt());
         } while (getLastNumber(userInputList) != 0);
         return userInputList;
     }
-
+    // Función para controlar el último número que el usuario introduce. Se utiliza en la línea 31 para finalizar el bucle.
     private int getLastNumber(List<Integer> userInputList) {
         return userInputList.get(userInputList.size() - 1);
 
     }
-
+    // Ordeno la lista.
     private List<Integer> sortList(List<Integer> listOfNumbers) {
         Collections.sort(listOfNumbers);
         return listOfNumbers;
     }
-
+    // Muestra la lista por pantalla una vez ha sido ordenada.
     private void showListOfNumbers(List<Integer> sortedList) {
         for (int currentItem : sortedList) {
             if (sortedList.indexOf(currentItem) == sortedList.size() - 1) {
