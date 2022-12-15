@@ -5,7 +5,7 @@ public class CambioBase {
         CambioBase cambioBase = new CambioBase();
         cambioBase.executeProgram();
     }
-
+    // Función encargada de llamar al resto de métodos PRIVADOS
     private void executeProgram(){
         showWelcome();
         showInstructions();
@@ -52,6 +52,8 @@ public class CambioBase {
             return false;
         }
     }
+    // Función encargada de realizar las operaciones necesarioas para pasar de decimal a binario.
+    // Devuelve un String con el número en binario correctamente representado.
     private String baseExchanger(int decimalNumber) {
         String conversionRemainders = "";
         String decimalToBinary = "";
@@ -70,6 +72,7 @@ public class CambioBase {
         return  decimalToBinary;
     }
 
+    // Función para cambiar la representación del número en binario. Ahora siempre se mostrará como una cadena de 32bits.
     private String representationTransform(String binaryNumber){
         String binaryNumberZerosAdded = "";
         int spacesBetweenZeros = 0;
@@ -91,6 +94,9 @@ public class CambioBase {
 
     }
 
+    // Función encargada de realizar la conversión del número en binario a binario en negativo en complemento a 2.
+    // Realizamos primero una pasada transformando '0' en '1' y viceversa.
+    // En una segunda pasada, sumamos (en binario) '1' a la cadena para hacerla negativa.
     private String twosComplementNegative(String binaryNumberThirtyTwoBits) {
         StringBuilder stringBuilder = new StringBuilder(binaryNumberThirtyTwoBits);
         boolean carryOne = false;
