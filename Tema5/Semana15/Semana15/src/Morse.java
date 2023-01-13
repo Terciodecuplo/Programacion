@@ -74,7 +74,7 @@ public class Morse {
         }
     }
 
-    private String getUserInput() { // ¿cómo pongo el scanner.close()???? me salta excepción.
+    private String getUserInput() { 
         String userInput = scanner.next();
         return userInput;
     }
@@ -96,7 +96,7 @@ public class Morse {
         }
     }
     private void showResult(int numberToConvert, String morseNumber){
-        System.out.println("El número introducido ha sido el " + numberToConvert + " , el cual, tranformado a morse es :" +
+        System.out.println("El número introducido ha sido el " + numberToConvert + " , el cual, transformado a morse es :" +
                 "\n" + morseNumber);
     }
 
