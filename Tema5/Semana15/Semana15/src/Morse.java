@@ -31,6 +31,7 @@ public class Morse {
     public static void main(String[] args) {
         Morse morse = new Morse();
         morse.executeProgram();
+
     }
 
     private void executeProgram() {
