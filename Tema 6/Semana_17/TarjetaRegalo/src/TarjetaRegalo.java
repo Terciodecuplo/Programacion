@@ -1,9 +1,10 @@
 public class TarjetaRegalo {
     double saldo;
-    String numeroTarjeta = generarNumeroTarjeta();
+    String numeroTarjeta;
 
     public TarjetaRegalo(double saldo) {
         this.saldo = saldo;
+        this.numeroTarjeta = generarNumeroTarjeta();
     }
 
     public String generarNumeroTarjeta() {

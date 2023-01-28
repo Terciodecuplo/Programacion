@@ -22,12 +22,9 @@ public class ProgramaPrincipal {
         System.out.println(t1.comprobarSaldo());
         System.out.println(t2.comprobarSaldo());
         System.out.println(t3.comprobarSaldo());
-        /*
-            *** NOTA: He mantenido como comentario el código necesario para comprobar que el número generado para la tarjeta funciona. ***
+        System.out.println("El número de la tarjeta 1 es: " + t1.numeroTarjeta);
+        System.out.println("El número de la tarjeta 2 es: " + t2.numeroTarjeta);
+        System.out.println("El número de la tarjeta 3 es: " + t3.numeroTarjeta);
 
-            System.out.println("El número de la tarjeta 1 es: " + t1.numeroTarjeta);
-            System.out.println("El número de la tarjeta 2 es: " + t2.numeroTarjeta);
-            System.out.println("El número de la tarjeta 3 es: " + t3.numeroTarjeta);
-         */
     }
 }
