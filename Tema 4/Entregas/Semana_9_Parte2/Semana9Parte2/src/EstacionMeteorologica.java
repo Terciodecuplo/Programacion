@@ -4,8 +4,8 @@ import java.util.concurrent.TimeUnit;
 public class EstacionMeteorologica {
     //Declaración de constantes
     static final int ARRAY_SIZE = 24;
-    static final int T_MIN = 0;
-    static final int T_MAX = 40;
+    static final double T_MIN = 0.00;
+    static final double T_MAX = 40.00;
     static final Scanner scanner = new Scanner(System.in);
 
 
@@ -118,7 +118,7 @@ public class EstacionMeteorologica {
     public static void randomArrayFilling(double[] temperatures) {
         System.out.println("Ha seleccionado la opción 'INTRODUCIR DATOS ALEATORIAMENTE'. \n\n");
         for (int i = 0; i < temperatures.length; i++) {
-            temperatures[i] = Math.floor((Math.random() * (T_MAX - T_MIN + 1) + T_MIN)*100)/100;
+            temperatures[i] = Math.floor((Math.random() * (T_MAX - T_MIN))*100)/100;
         }
         try {
             showWaitingMsg();
