@@ -6,25 +6,28 @@ public class EstacionMeteorologica {
     static final int ARRAY_SIZE = 24;
     static final int T_MIN = 0;
     static final int T_MAX = 40;
+    static final Scanner scanner = new Scanner(System.in);
+
 
     public static void main(String[] args) {
         char userSelection;
-        int[] temperatures = new int[ARRAY_SIZE];
+        double[] temperatures = new double[ARRAY_SIZE];
         boolean arrayIsEmpty = true;    //Si el array está vacío no se podrán mostrar u operar con los datos.
         showHeader();
         do {
             showMenu();
             userSelection = getUserInput();
-            if(arrayIsEmpty) {  //Una vez el usuario pulse la opción para introducir datos, estos podrán mostrarse siempre.
+            if (arrayIsEmpty) {  //Una vez el usuario pulse la opción para introducir datos, estos podrán mostrarse siempre.
                 if (userSelection == 'a' || userSelection == 'A' || userSelection == 'b' || userSelection == 'B') {
                     arrayIsEmpty = false;
                 }
             }
             userSelectedOption(userSelection, temperatures, arrayIsEmpty);
-        }while(userSelection != 'f' && userSelection != 'F');
+        } while (userSelection != 'f' && userSelection != 'F');
+        scanner.close();
     }
 
-    public static void showHeader(){
+    public static void showHeader() {
         System.out.println("  __  __      _               ____            _     _              \n" +
                 " |  \\/  | ___| |_ ___  ___   |  _ \\ ___  __ _(_)___| |_ _ __ _   _ \n" +
                 " | |\\/| |/ _ \\ __/ _ \\/ _ \\  | |_) / _ \\/ _` | / __| __| '__| | | |\n" +
@@ -34,7 +37,7 @@ public class EstacionMeteorologica {
         System.out.println("Bienvenido/a al registro de temperaturas más famoso de la UEM.");
     }
 
-    public static void showMenu(){
+    public static void showMenu() {
         System.out.println("Por favor, introduzca una de las siguientes opciones disponibles para continuar (a - f):");
         System.out.println();
         System.out.println("a) Rellenar el vector de forma manual.");
@@ -45,45 +48,45 @@ public class EstacionMeteorologica {
         System.out.println("f) Salir del programa.");
     }
 
-    public static char getUserInput(){
-        Scanner scanner = new Scanner(System.in);
+    public static char getUserInput() {
         System.out.print("Su elección: ");
-        char userInput = scanner.next().charAt(0);
+        char userInput = scanner.next().toLowerCase().charAt(0);
         System.out.println();
         return userInput;
 
     }
+
     //Accedemos a las diferentes opciones del menú en función de lo que el usuario haya pulsado.
-    public static void userSelectedOption(char userSelection, int[] temperatures, boolean arrayIsEmpty){
-        switch (userSelection){
-            case 'a', 'A':
+    public static void userSelectedOption(char userSelection, double[] temperatures, boolean arrayIsEmpty) {
+        switch (userSelection) {
+            case 'a':
                 manualArrayFilling(temperatures);
                 break;
-            case 'b', 'B':
+            case 'b':
                 randomArrayFilling(temperatures);
                 break;
-            case 'c', 'C':
+            case 'c':
                 if (arrayIsEmpty) {
                     System.out.println("Los datos están vacíos. Por favor introduzca los datos correspondientes primero.");
                 } else {
                     showArrayData(temperatures);
                 }
                 break;
-            case 'd', 'D':
+            case 'd':
                 if (arrayIsEmpty) {
                     System.out.println("Los datos están vacíos. Por favor introduzca los datos correspondientes primero.");
                 } else {
                     showMaxMinTemps(temperatures);
                 }
                 break;
-            case 'e', 'E':
+            case 'e':
                 if (arrayIsEmpty) {
                     System.out.println("Los datos están vacíos. Por favor introduzca los datos correspondientes primero.");
                 } else {
                     showAverageTemp(temperatures);
                 }
                 break;
-            case 'f', 'F':
+            case 'f':
                 System.out.println("Gracias por usar Meteo Registry.");
                 System.out.println("Fin de programa.");
                 break;
@@ -96,13 +99,13 @@ public class EstacionMeteorologica {
         System.out.println();
     }
 
-    public static void manualArrayFilling(int[] temperatures){
+    public static void manualArrayFilling(double[] temperatures) {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Ha seleccionado la opción 'INTRODUCIR DATOS MANUALMENTE'.");
         System.out.println("Por favor introduzca los datos según se le vayan solicitando");
         System.out.println();
         for (int i = 0; i < temperatures.length; i++) {
-            if (i < 10){
+            if (i < 10) {
                 System.out.print("Introduzca la temperatura de las 0" + i + " horas: ");
             } else {
                 System.out.print("Introduzca la temperatura de las " + i + " horas: ");
@@ -112,30 +115,30 @@ public class EstacionMeteorologica {
         System.out.println("DATOS COMPLETOS.");
     }
 
-    public static void randomArrayFilling(int[] temperatures){
-        System.out.println("Ha seleccionado la opción 'INTRODUCIR DATOS ALEATORIAMENTE'.");
-        System.out.println();
-        System.out.println();
+    public static void randomArrayFilling(double[] temperatures) {
+        System.out.println("Ha seleccionado la opción 'INTRODUCIR DATOS ALEATORIAMENTE'. \n\n");
         for (int i = 0; i < temperatures.length; i++) {
-            temperatures[i] = (int) (Math.random() * (T_MAX - T_MIN + 1) + T_MIN);
+            temperatures[i] = Math.floor((Math.random() * (T_MAX - T_MIN + 1) + T_MIN)*100)/100;
         }
-        try{
-            showWaitingMsg() ;
-        }catch (InterruptedException e) {
+        try {
+            showWaitingMsg();
+        } catch (InterruptedException e) {
+            System.out.println("ERROR DATOS CORRUPTOS!!");
         }
     }
+
     //Este método simula el tiempo de procesamiento que llevaría la introducción de los datos.
-    //Actualmente espera entorno a 5 segundos.
+    //Actualmente, espera en torno a 3 segundos.
     public static void showWaitingMsg() throws InterruptedException {
         System.out.print(" --------> RELLENANDO DATOS ESPERE");
-        for (int i = 0; i < 5; i++) {
-            System.out.print(".");
+        for (int i = 0; i < 3; i++) {
+            System.out.print("--");
             TimeUnit.SECONDS.sleep(1);
         }
         System.out.println("DATOS COMPLETOS");
     }
 
-    public static void showArrayData(int[] temperatures){
+    public static void showArrayData(double[] temperatures) {
         System.out.println("Ha seleccionado la opción 'MOSTRAR DATOS'.");
         System.out.println();
         System.out.println();
@@ -148,9 +151,9 @@ public class EstacionMeteorologica {
         }
     }
 
-    public static void showMaxMinTemps(int[] temperatures){
-        int minDayTemp = T_MAX;
-        int maxDayTemp = T_MIN;
+    public static void showMaxMinTemps(double[] temperatures) {
+        double minDayTemp = T_MAX;
+        double maxDayTemp = T_MIN;
         int minDayTempHour = 0;
         int maxDayTempHour = 0;
         System.out.println("Ha selecciónado la opción 'OBTENER TEMPERATURA MÍNIMA Y MÁXIMA'.");
@@ -184,14 +187,14 @@ public class EstacionMeteorologica {
         }
     }
 
-    public static void showAverageTemp(int[] temperatures){
+    public static void showAverageTemp(double[] temperatures) {
         float averageTemp = 0.0f;
         System.out.println("Ha seleccionado la opción 'TEMPERATURA MEDIA'.");
         System.out.println();
         for (int i = 0; i < temperatures.length; i++) {
             averageTemp += temperatures[i];
         }
-        averageTemp = Math.round(averageTemp/temperatures.length); //Mostramos un redondeo
-        System.out.println("La temperatura media del día es de " + (int)averageTemp +"ºC.");
+        averageTemp = Math.round(averageTemp / temperatures.length); //Mostramos un redondeo
+        System.out.println("La temperatura media del día es de " + averageTemp + "ºC.");
     }
 }
