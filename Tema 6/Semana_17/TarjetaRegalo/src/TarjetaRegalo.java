@@ -30,11 +30,11 @@ public class TarjetaRegalo {
         }
     }
 
-    public double fusionaCon(TarjetaRegalo tarjeta) {
-        double totalBalance = tarjeta.saldo + this.saldo;
+    public TarjetaRegalo fusionaCon(TarjetaRegalo tarjeta) {
+        TarjetaRegalo newCard = new TarjetaRegalo(tarjeta.saldo + this.saldo);
         tarjeta.saldo = 0;
         this.saldo = 0;
-        return totalBalance;
+        return newCard;
     }
 
 }

@@ -18,7 +18,7 @@ public class ProgramaPrincipal {
         t1.gasta(3.55);
         System.out.println(t1.comprobarSaldo());
         System.out.println(t2.comprobarSaldo());
-        TarjetaRegalo t3 = new TarjetaRegalo(t1.fusionaCon(t2));
+        TarjetaRegalo t3 = t1.fusionaCon(t2);
         System.out.println(t1.comprobarSaldo());
         System.out.println(t2.comprobarSaldo());
         System.out.println(t3.comprobarSaldo());
