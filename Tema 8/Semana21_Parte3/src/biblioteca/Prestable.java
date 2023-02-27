@@ -1,8 +1,8 @@
 package biblioteca;
 
 public interface Prestable {
-     public void presta(boolean state);
-     public void devuelve(boolean state);
-     public boolean esPrestado(boolean state);
+     public boolean presta(boolean state);
+     public boolean devuelve(boolean state);
+     public void estaPrestado(boolean state);
 
 }
