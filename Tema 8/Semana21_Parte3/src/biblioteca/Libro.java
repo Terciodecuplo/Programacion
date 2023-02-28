@@ -1,38 +1,35 @@
 package biblioteca;
 
-public class Libro extends Publicacion implements Prestable{
-    private boolean prestado;
+public class Libro extends Publicacion implements Prestable {
+    private boolean prestado = false;
 
-    public Libro(boolean prestado, String isbn, String title, int publicationYear){
+    public Libro(String isbn, String title, int publicationYear) {
         super(isbn, title, publicationYear);
-        this.prestado=prestado;
     }
 
     @Override
-    public boolean presta(boolean state) {
-        if(!state){
+    public void presta() {
+        if (!this.prestado) {
             System.out.println("El libro ha sido prestado.");
-            return true;
+            this.prestado = true;
         } else {
             System.out.println("El libro no se encuentra disponible.");
-            return false;
         }
     }
 
     @Override
-    public boolean devuelve(boolean state) {
-        if(state){
+    public void devuelve() {
+        if (this.prestado) {
             System.out.println("Has devuelto el libro");
-            return  false;
-        }else{
-            System.out.println("No se puede devolver lo que no se posee...");
-            return false;
+            this.prestado = false;
+        } else {
+            System.out.println("No se puede devolver lo que no se tiene...");
         }
     }
 
     @Override
-    public void estaPrestado(boolean state) {
-        if(state){
+    public void estaPrestado() {
+        if (this.prestado) {
             System.out.println("El libro está prestado.");
         } else {
             System.out.println("El libro se puede prestar.");
