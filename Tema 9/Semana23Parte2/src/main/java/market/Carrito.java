@@ -1,16 +1,17 @@
 package market;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Carrito {
     private final ArrayList<Elemento> listaElementos = new ArrayList<>();
-
     public void agrega(Elemento elemento) {
         this.listaElementos.add(elemento);
     }
 
     public int numeroDeElementos() {
         return this.listaElementos.size();
+
     }
 
     public double importeTotal() {
