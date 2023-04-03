@@ -24,6 +24,7 @@ public class DivisionEntreEnteros {
                 System.out.println("Exception: " + e.getMessage());
             }
         } while (!correctDivisor);
+        scanner.close();    //Conseguido Irene!! He cerrado un scanner!! XD
 
 
     }
